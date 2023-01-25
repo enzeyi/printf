@@ -1,1 +1,0 @@
-a trial based dir
