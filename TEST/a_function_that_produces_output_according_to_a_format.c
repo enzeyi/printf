@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 
-int _printf(const char *format, ...) {
+int my_printf(const char *format, ...) {
     va_list args;
     int count = 0;
 
@@ -16,8 +16,12 @@ int _printf(const char *format, ...) {
                     count++;
                     break;
                 case 's':
-                    fputs(va_arg(args, char*), stdout);
+                    printf("%s", va_arg(args, char*));
                     count += strlen(va_arg(args, char*));
+                    break;
+                case 'd':
+                    printf("%d", va_arg(args, int));
+                    count += snprintf(NULL, 0, "%d", va_arg(args, int));
                     break;
                 case '%':
                     putchar('%');
